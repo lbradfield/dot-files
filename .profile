@@ -29,6 +29,7 @@ fi
 # set PYTHONPATH for custom packages
 # this adds the paths in ~/.python_path (separated by line) to the python path
 if [ -f "$HOME/.python_path" ] ; then
+    export PYTHONPATH=
     while IFS= read -r line ; do
         line=`eval "echo $line"`
         export PYTHONPATH=$line:$PYTHONPATH
