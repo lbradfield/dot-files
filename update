@@ -1,0 +1,6 @@
+#!/bin/bash
+wd=$(pwd)
+cd $(dirname "$0")
+exclude=(.git)
+targets=$(find ./ -name ! "${exclude}"
+cp ~/.
