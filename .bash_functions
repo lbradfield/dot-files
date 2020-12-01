@@ -138,3 +138,31 @@ cdops () {
     #echo $(find "$HOME"/Desktop/svn.Operations_Landmapper/ -maxdepth 3 -type d -iname "$dir" -path "*$level*")
     cd $(find "$HOME"/Desktop/svn.Operations_Landmapper/ -maxdepth 3 -type d -iname "$dir" -path "*$level*")
 }
+
+
+build_prompt() {
+  EXIT=$?               # save exit code of last command
+  # 256 colors
+  red='\[\e[38;5;160m\]'
+  green='\[\e[38;5;46m\]'
+  forest='\[\e[38;5;35m\]'
+  aqua='\[\e[38;5;73m\]'
+  tan='\[\e[38;5;144m\]'
+  reset='\[\e[0m\]'
+  # unicode
+  cross=$'\u292b'
+  circle=$'\u25CF'
+  arrow=$'\u279c'
+  PS1='${debian_chroot:+($debian_chroot)}'  # begin prompt
+
+  PS1+=" $forest\u$reset@$tan\h: $aqua\w\n " # user, path, newline
+
+  if [ $EXIT != 0 ]; then  # add arrow color dependent on exit code
+    PS1+="$red$cross"
+  else
+    PS1+="$green$circle"
+  fi
+
+  PS1+="  $reset$arrow  " # construct rest of prompt
+}
+
